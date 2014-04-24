@@ -1,0 +1,89 @@
+\documentclass[10pt]{beamer}
+\usepackage[brazilian]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{kpfonts}
+\usepackage[T1]{fontenc}
+\usetheme[left]{AAUsidebar}
+
+\usepackage{helvet}
+
+\newcommand{\chref}[2]{\href{#1}{{\usebeamercolor[bg]{AAUsidebar}#2}}%
+}
+
+\title[Title]{Titulo}
+
+\subtitle{}  
+
+\date{\today}
+
+\author[Silvana Trindade] 
+{
+  Name author\\
+  \href{mailto:myemail@gmail.com}{{\tt myemail@gmail.com}}
+}
+
+\institute[
+  {\includegraphics[scale=0.1]{AAUgraphics/Logo}}\\ ]
+{
+  Course\\
+  Universidad\\
+}
+
+\pgfdeclareimage[height=3cm]{titlepagelogo}{AAUgraphics/Logo} 
+\titlegraphic{
+  \pgfuseimage{titlepagelogo}
+}
+
+\begin{document}
+{\aauwavesbg
+\begin{frame}[plain,noframenumbering] 
+  \titlepage
+\end{frame}
+}
+\begin{frame}{Sumario}{}
+\tableofcontents
+\end{frame}
+
+
+\section{Introduction}
+
+	Introduction in slider
+	
+\begin{frame}{Introduction}{}
+ 
+\end{frame}
+
+
+\section{Feedback}
+
+\subsection{Known Problems}
+\begin{frame}{Feedback}{Known Problems}
+
+  Known Problems
+  
+\end{frame}
+
+
+\subsection{Bugs, Comments and Suggestions}
+\begin{frame}{Feedback}{Bugs, Comments and Suggestions}
+
+ 	Bugs, Comments and Suggestions
+ 	
+\end{frame}
+
+\subsection{Contact Information}
+\begin{frame}{Feedback}{Contact Information}
+Contact Information
+  \begin{center}
+    \insertauthor\\
+  \end{center}  
+\end{frame}
+
+
+{\aauwavesbg
+	\begin{frame}[plain,noframenumbering]
+  		\finalpage{Thanks!}
+	\end{frame}
+}
+
+\end{document}
