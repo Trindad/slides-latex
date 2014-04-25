@@ -1,30 +1,24 @@
-% This is the main beamer theme file of the AAU sidebar theme.
-% Copyright (c) 2010-2013 by Jesper Kjær Nielsen <jkn@es.aau.dk>
+%Copyright {2014} {Silvana Trindade}
 %
-% This program is free software: you can redistribute it and/or modify
-% it under the terms of the GNU General Public License as published by
-% the Free Software Foundation, either version 3 of the License, or
-% (at your option) any later version.
+%   Licensed under the Apache License, Version 2.0 (the "License");
+%   you may not use this file except in compliance with the License.
+%   You may obtain a copy of the License at
 %
-% This program is distributed in the hope that it will be useful,
-% but WITHOUT ANY WARRANTY; without even the implied warranty of
-% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-% GNU General Public License for more details.
+%       http://www.apache.org/licenses/LICENSE-2.0
 %
-% You can find the GNU General Public License at <http://www.gnu.org/licenses/>.
+%   Unless required by applicable law or agreed to in writing, software
+%   distributed under the License is distributed on an "AS IS" BASIS,
+%   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+%   See the License for the specific language governing permissions and
+%   limitations under the License.
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{beamerthemeAAUsidebar}[2013/05/26 v1.3.0 The AAU Sidebar Beamer Theme]
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Load required packages
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ProvidesPackage{beamerthemeAAUsidebar}[2014/04/25 v1.1.0 The AAU Sidebar Beamer Theme]
+
 \RequirePackage{tikz}
 \RequirePackage{calc}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Theme options and definitions
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%theme options
+
 \DeclareOptionBeamer{width}{\PassOptionsToPackage{width=#1}{beamerouterthemeAAUsidebar}}
 \DeclareOptionBeamer{hideothersubsections}{\PassOptionsToPackage{hideothersubsections}{beamerouterthemeAAUsidebar}}
 \DeclareOptionBeamer{hideallsubsections}{\PassOptionsToPackage{hideallsubsections}{beamerouterthemeAAUsidebar}}
@@ -43,14 +37,11 @@
   }
 \ProcessOptionsBeamer
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%beamer specific options
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\mode<presentation>%refers to the first four modes (beamer,handout,second and trans). That is, to all modes except the article mode
+\mode<presentation>
 {
   \useinnertheme{AAUsidebar}
   \useoutertheme{AAUsidebar}
   \usecolortheme{AAUsidebar}
-}%end of beamer specific options
+}
 
 \mode<all>

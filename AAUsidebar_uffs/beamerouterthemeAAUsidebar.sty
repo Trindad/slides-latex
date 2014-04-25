@@ -1,38 +1,23 @@
-% The outer AAU sidebar theme is derived from the outer sidebar theme which has the following
-% copyright notice:
-% Copyright 2007 by Till Tantau
-% This file may be distributed and/or modified under the GNU Public License.
+%Copyright {2014} {Silvana Trindade}
 %
-% See the file doc/licenses/LICENSE for more details.
-% <end of copyright notice>
+%   Licensed under the Apache License, Version 2.0 (the "License");
+%   you may not use this file except in compliance with the License.
+%   You may obtain a copy of the License at
 %
-% All the changes are (c) 2010-2013 by Jesper Kjær Nielsen <jkn@es.aau.dk> and are
-% provided under the same license. (GPLv3)
+%       http://www.apache.org/licenses/LICENSE-2.0
 %
-% This program is free software: you can redistribute it and/or modify
-% it under the terms of the GNU General Public License as published by
-% the Free Software Foundation, either version 3 of the License, or
-% (at your option) any later version.
-%
-% This program is distributed in the hope that it will be useful,
-% but WITHOUT ANY WARRANTY; without even the implied warranty of
-% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-% GNU General Public License for more details.
-%
-% You can find the GNU General Public License at <http://www.gnu.org/licenses/>.
+%   Unless required by applicable law or agreed to in writing, software
+%   distributed under the License is distributed on an "AS IS" BASIS,
+%   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+%   See the License for the specific language governing permissions and
+%   limitations under the License.
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{beamerouterthemeAAUsidebar}[2013/05/26 v1.3.0 The AAU Sidebar Beamer Theme]
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Load required packages
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ProvidesPackage{beamerouterthemeAAUsidebar}[2014/04/25 v1.1.0 The AAU Sidebar Beamer Theme]
+
 \RequirePackage{tikz}
 \RequirePackage{calc}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Theme options and definitions
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%theme options
 \newlength{\beamer@width}
 \setlength{\beamer@width}{2cm}
 \DeclareOptionBeamer{width}{\beamer@width=#1}
@@ -48,34 +33,24 @@
 \ProcessOptionsBeamer
 
 
-%the height of the header is 2.5 times the lineheight of the frame title
 \newlength{\beamer@height}
-\usebeamerfont{frametitle} %use the frame title font
+\usebeamerfont{frametitle} 
 \setlength{\beamer@height}{2.5\baselineskip} 
 \reset@font %reset fonts
-\def\beamer@lefttext{left} %used for comparison below
-%width of vertical bar separating the main text from the sidebar
+\def\beamer@lefttext{left} 
 \newlength{\beamer@barwidth}
-\setlength{\beamer@barwidth}{2\beamer@height/15} %the bar width depends on the header height (by a factor of 7.5)
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%beamer specific options
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\mode<presentation>%refers to the first four modes (beamer,handout,second and trans). That is, to all modes except the article mode
+\setlength{\beamer@barwidth}{2\beamer@height/15} 
+\mode<presentation>
 {
   \ifbeamercolorempty[fg]{AAUsidebar}{%
-    %define the aau sidebar color if it is not defined (which may be due to that the AAUsidebar color theme is not loaded)
+   
     \setbeamercolor{AAUsidebar}{use={structure,palette sidebar primary},fg=palette sidebar primary.fg,bg=structure.fg}
-  }{%
-    %aau header is defined - nothing to do
+  }{
   }
   \setbeamersize{sidebar width \beamer@sidebarside=\beamer@width}
   \setbeamersize{text margin left=0.5cm,text margin right=0.5cm}
   
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  %templates
-  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%  %headline
+
   \defbeamertemplate*{headline}{AAUsidebar theme}{%
     \AAUheaderbackground%
   }
@@ -83,14 +58,14 @@
   
   %frame title
   \defbeamertemplate*{frametitle}{AAUsidebar theme}{%
-    \ifx\beamer@sidebarside\beamer@lefttext% sidebar on the left
+    \ifx\beamer@sidebarside\beamer@lefttext
       \hfill%
     \fi%
     \begin{minipage}[c][\beamer@height][c]{\textwidth-\beamer@height/2}
       {\usebeamercolor[fg]{frametitle}\usebeamerfont{frametitle}\insertframetitle\par}%
       {\usebeamercolor[fg]{framesubtitle}\usebeamerfont{framesubtitle}\insertframesubtitle\par}%
     \end{minipage}
-    \ifx\beamer@sidebarside\beamer@righttext% sidebar on the right
+    \ifx\beamer@sidebarside\beamer@righttext
       \hfill%
     \fi%
   }
@@ -100,7 +75,7 @@
     \AAUsidebarbackground%
     \vspace{\beamer@height}%
     \vspace{2\baselineskip}\par%
-    \ifx\beamer@hidetitle\undefined% insert short title
+    \ifx\beamer@hidetitle\undefined
       \vspace{-\baselineskip}
       \hspace{0.05\beamer@width}%
       {% 
@@ -111,7 +86,7 @@
       \hspace{0.05\beamer@width}
       \vspace{2\baselineskip}\par%
     \fi
-    \ifx\beamer@hideauthor\undefined% insert short author
+    \ifx\beamer@hideauthor\undefined
       \vspace{-\baselineskip}
       \hspace{0.05\beamer@width}%
       {%
@@ -124,7 +99,7 @@
     \fi
     \insertverticalnavigation{\beamer@width}%
     \strut\vfill%
-    \ifx\beamer@hideinst\undefined% insert short institute
+    \ifx\beamer@hideinst\undefined
       \vbox{\hspace{0.05\beamer@width}%
       {%
         \usebeamercolor[fg]{title in sidebar}
@@ -135,12 +110,12 @@
       \vspace*{\baselineskip}
       }%
     \fi
-    \ifx\beamer@shownavsym\undefined% insert navigation symbols
-      %do nothing
+    \ifx\beamer@shownavsym\undefined
+      
     \else
-      %insert the navigation symbols if the sidebar is on the right
-      \ifx\beamer@sidebarside\beamer@lefttext %sidebar on the left
-        %do nothing
+     
+      \ifx\beamer@sidebarside\beamer@lefttext
+        
       \else
         \vspace*{-2\baselineskip}
         \llap{\usebeamertemplate***{navigation symbols}\hskip0.4cm}
@@ -148,14 +123,12 @@
       \fi
     \fi
   }
-
-% When the sidebar is on the left, the default theme places a logo in the bottom right of the slide (this is NOT the case, when the sidebar is on the right). We remove this logo.
   \ifx\beamer@sidebarside\beamer@lefttext %sidebar on the left
     \defbeamertemplate*{sidebar right}{AAUsidebar theme}{%
-      % remove the logo and insert the navigation symbols if option is set
-      \ifx\beamer@shownavsym\undefined% insert navigation symbols
-        %do nothing
-      \else %insert navigation symbols
+     
+      \ifx\beamer@shownavsym\undefined
+       
+      \else 
         \vfill%
         \llap{\usebeamertemplate***{navigation symbols}\hskip0.4cm}
         \vskip2pt
@@ -163,10 +136,10 @@
     }
   \fi
   
-  % current section in the sidebar
+ 
   \defbeamertemplate*{section in sidebar}{AAUsidebar theme}{%
     \vbox{%
-      \vskip1ex% add some extra space when inserting a new section
+      \vskip1ex
       \sidebarnavitem{4pt}{section in sidebar}{%
         \sidebarcurframe{\insertframenumber}%
         \insertsectionhead
@@ -174,15 +147,15 @@
     }
   }
 
-  % all section in the sidebar but the current
+ 
   \defbeamertemplate*{section in sidebar shaded}{AAUsidebar theme}{%
     \vbox{%
-      \vskip1ex% add some extra space when inserting a new section
+      \vskip1ex
       \sidebarnavitem{4pt}{section in sidebar shaded}{\insertsectionhead}
     }
   }
 
-  % current subsection in the sidebar
+ 
   \defbeamertemplate*{subsection in sidebar}{AAUsidebar theme}{%
     \sidebarnavitem{6pt}{subsection in sidebar}{
       \sidebarcurframe{\insertframenumber}%
@@ -190,12 +163,12 @@
     }
   }
 
-  % all subsection in the sidebar but the current
+ 
   \defbeamertemplate*{subsection in sidebar shaded}{AAUsidebar theme}{%
     \sidebarnavitem{6pt}{subsection in sidebar shaded}{\insertsubsectionhead}
   }
 
-  % current subsubsection in the sidebar
+ 
   \defbeamertemplate*{subsubsection in sidebar}{AAUsidebar theme}{%
     \sidebarnavitem{8pt}{subsubsection in sidebar}{
       \sidebarcurframe{\insertframenumber}%
@@ -203,91 +176,79 @@
     }  
   }
 
-  % all subsubsection in the sidebar but the current
+ 
   \defbeamertemplate*{subsubsection in sidebar shaded}{AAUsidebar theme}{%
     \sidebarnavitem{8pt}{subsubsection in sidebar shaded}{\insertsubsubsectionhead} 
   }
 
-  \ifx\beamer@shownavsym\undefined% insert navigation symbols
+  \ifx\beamer@shownavsym\undefined
     \setbeamertemplate{navigation symbols}{%
-      %disable navigation symbols
+      
     }
   \fi
 
-}%end of beamer specific options
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%Macros used in the theme 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% the fancy header background
+}
 \newcommand{\AAUheaderbackground}[0]{%
   \begin{tikzpicture}[overlay]
-    \ifx\beamer@sidebarside\beamer@lefttext% sidebar on the left
-      \coordinate (UC) at (\paperwidth,0); %upper right corner of the slide
-      \coordinate (LC) at (0,-\paperheight); %lower left corner of the slide
-      \coordinate (BS) at (\paperwidth,-\beamer@height); %start coordinate of the bar
-      \coordinate (BE) at (\beamer@width+\beamer@barwidth/2,-\paperheight); %end coordinate of the bar
-    \else% sidebar on the right
-      \coordinate (UC) at (0,0); %upper left corner of the slide
-      \coordinate (LC) at (\paperwidth,-\paperheight); %lower right corner of the slide
-      \coordinate (BS) at (0,-\beamer@height); %start coordinate of the bar
-      \coordinate (BE) at (\paperwidth-\beamer@width-\beamer@barwidth/2,-\paperheight); %end coordinate of the bar
+    \ifx\beamer@sidebarside\beamer@lefttext
+      \coordinate (UC) at (\paperwidth,0); 
+      \coordinate (LC) at (0,-\paperheight); 
+      \coordinate (BS) at (\paperwidth,-\beamer@height); 
+      \coordinate (BE) at (\beamer@width+\beamer@barwidth/2,-\paperheight); 
+    \else
+      \coordinate (UC) at (0,0); 
+      \coordinate (LC) at (\paperwidth,-\paperheight); 
+      \coordinate (BS) at (0,-\beamer@height);
+      \coordinate (BE) at (\paperwidth-\beamer@width-\beamer@barwidth/2,-\paperheight); 
     \fi
-    \coordinate (IS) at (BS -| BE); %intersection
-    \coordinate (logopos) at ([yshift=\beamer@height/2] IS);%coordinate of the logo
-    %draw the background of the header, the circle and the logo
-    {\usebeamercolor{frametitle}%
-      \usebeamercolor{AAUsidebar}%
+    \coordinate (IS) at (BS -| BE);
+    \coordinate (logopos) at ([yshift=\beamer@height/2] IS);
+    {\usebeamercolor{frametitle}
+      \usebeamercolor{AAUsidebar}
       \draw[draw=none,fill=frametitle.bg] (UC) rectangle (IS -| LC);
       \fill[fill=AAUsidebar.fg] ([yshift=\beamer@height/2] IS) circle (1.2*\beamer@height/2);
       \node at (logopos) {\includegraphics[width=0.99\beamer@height]{AAUgraphics/icon}};
     }
-  \end{tikzpicture}%
+  \end{tikzpicture}
 }
 
-% the fancy background in the sidebar
-\newcommand{\AAUsidebarbackground}[0]{%
+\newcommand{\AAUsidebarbackground}[0]{
   \begin{tikzpicture}[remember picture,overlay]
-    \ifx\beamer@sidebarside\beamer@lefttext% sidebar on the left
-      \coordinate (BS) at (\paperwidth,-\beamer@height); %start coordinate of the bar
-      \coordinate (BE) at (\beamer@width+\beamer@barwidth/2,-\paperheight); %end coordinate of the bar
-    \else% sidebar on the right
-      \coordinate (BS) at (-\paperwidth+\beamer@width,-\beamer@height); %start coordinate of the bar
-      \coordinate (BE) at (-\beamer@barwidth/2,-\paperheight); %end coordinate of the bar
+    \ifx\beamer@sidebarside\beamer@lefttext
+      \coordinate (BS) at (\paperwidth,-\beamer@height); 
+      \coordinate (BE) at (\beamer@width+\beamer@barwidth/2,-\paperheight);
+    \else
+      \coordinate (BS) at (-\paperwidth+\beamer@width,-\beamer@height); 
+      \coordinate (BE) at (-\beamer@barwidth/2,-\paperheight); 
     \fi
-    \coordinate (IS) at (BS -| BE); %intersection
-    %draw the thick line
-    {\usebeamercolor{AAUsidebar}%
+    \coordinate (IS) at (BS -| BE);
+    {\usebeamercolor{AAUsidebar}
       \draw[color=fg,line width=\beamer@barwidth] (IS) -- (BE);
     }
-    %draw the circle with the total frame number
+   
     {\usebeamercolor{palette sidebar primary}%
       \usebeamercolor{AAUsidebar}%
       \usebeamerfont{subsection in sidebar}%
       \node[fill=palette sidebar primary.bg,draw=AAUsidebar.fg,circle,very thick,minimum width=4mm] at ([yshift=2mm] BE) {{\usebeamercolor[fg]{subsection in sidebar}\inserttotalframenumber}};
     }
   \end{tikzpicture}%
-}
-
-% sidebar navigation item  
+} 
 \newcommand{\sidebarnavitem}[3]{%
   \begin{beamercolorbox}[wd=\beamer@width,leftskip=#1,rightskip=1ex plus1fil,vmode]{#2}
-    \vbox{}% insert a blank line
+    \vbox{}
     #3\par%
-    \vbox{}% insert a blank line
+    \vbox{}
     \vskip-1.5ex%
   \end{beamercolorbox}
 }
 
-% current frame number
 \newcommand{\sidebarcurframe}[1]{%
   \begin{tikzpicture}[remember picture,overlay]
-  \coordinate (CS) at (0,0.8ex); % coordinate of the current section
-  \coordinate (CF) at (IS |- CS); % coordinate of the current frame number
+  \coordinate (CS) at (0,0.8ex); 
+  \coordinate (CF) at (IS |- CS); 
   {%
     \usebeamercolor{palette sidebar primary}%
     \usebeamercolor{AAUsidebar}%
-%    \draw[color=bg,line width=\beamer@barwidth] (IS) -| (CF);
     \node[fill=palette sidebar primary.bg,draw=AAUsidebar.fg,circle,minimum width=3.5mm,thick] at (CF) {{\fontsize{4}{5}\selectfont{\usebeamercolor[fg]{subsection in sidebar}#1}}};
   }
   \end{tikzpicture}%
