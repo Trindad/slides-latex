@@ -1,4 +1,4 @@
-cc_ufss_beamer_theme
+beamer theme
 =====================
 
 Tema padrão para slides feitos em Latex utilizando o Beamer.
